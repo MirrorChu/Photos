@@ -211,6 +211,7 @@ public class TestHiveConnectorTest
         // Hive connector supports row-by-row delete only for ACID tables
         // but these currently cannot be used with file metastore.
     }
+
     /**
      * This test aims at testing if there are errors when we want to get the explanation of creating-table operation
      * @param no parameter is required
@@ -224,6 +225,7 @@ public class TestHiveConnectorTest
         MaterializedResult result = computeActual("EXPLAIN " + query);
         assertEquals(getOnlyElement(result.getOnlyColumnAsSet()), getExplainPlan(query, DISTRIBUTED));
     }
+
     /**
      * This test aims at testing if there are errors when we try to get a coloumn bu its name
      * @param columnName the name of the coloumn

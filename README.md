@@ -28,7 +28,7 @@ The fifth selected issue is https://github.com/trinodb/trino/issues/7107, which 
 
 **(b) Test Scenarios**
 
-For the first selected issue, the first test scenario corresponds to method **testVarcharToCharSaturatedFloorCast** in class TestCharacterStringCasts, the second test scenario corresponds to method **testVarcharToCharSaturatedFloorCast1** in class TestCharacterStringCasts.
+For the first selected issue, the first test scenario corresponds to method **testVarcharToCharSaturatedFloorCast** in class TestCharacterStringCasts1, the second test scenario corresponds to method **testVarcharToCharSaturatedFloorCast1** in class TestCharacterStringCasts1.
 
 For the second selected issue, the first test scenario corresponds to method **testShowCreateTable** in class TestRaptorBucketedConnectorTest, the second test scenario corresponds to method **testShardsSystemTableBucketNumber** in class TestRaptorBucketedConnectorTest.
 
@@ -57,7 +57,21 @@ The pull request for the fifth selected issue is https://github.com/trinodb/trin
 
 **(d) Static Analysis Tools**
 
-We will run these tools in front of TA in code review.
+For Checkstyle,
+
+![Checkstyle](https://github.com/MirrorChu/Photos/blob/master/progress_report/Checkstyle.png)
+
+For PMD, 
+
+![PMD1](https://github.com/MirrorChu/Photos/blob/master/progress_report/PMD1.png)
+
+![PMD2](https://github.com/MirrorChu/Photos/blob/master/progress_report/PMD2.png)
+
+![PMD3](https://github.com/MirrorChu/Photos/blob/master/progress_report/PMD3.png)
+
+For SpotBugs, 
+
+![SpotBugs](https://github.com/MirrorChu/Photos/blob/master/progress_report/SpotBugs.png)
 
 
 
@@ -85,7 +99,7 @@ For the second selected issue, all methods in class MyRaptorConnector will be te
 
 ![JUnitTests2](https://github.com/MirrorChu/Photos/blob/master/progress_report/JUnitTests2.png)
 
-For the first selected issue, 1 method will be tested as shown below.
+For the first selected issue, 1 method in class TestCharacterStringCasts1 will be tested as shown below.
 
 ![JUnitTests1](https://github.com/MirrorChu/Photos/blob/master/progress_report/JUnitTests1.png)
 
@@ -177,5 +191,4 @@ Our selected lab session is (C) Lab Session 3 实验 3 班 Tuesday 10.20-12.10pm
     <td>11811002</td>
   </tr>
 </table>
-
 

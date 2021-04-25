@@ -59,7 +59,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class MyRaptorConnector
         implements Connector
 {
-    private static final Logger log = Logger.get(MyRaptorConnector.class);
+    private static final Logger LOG = Logger.get(MyRaptorConnector.class);
 
     private final LifeCycleManager lifeCycleManager;
     private final RaptorMetadataFactory metadataFactory;
@@ -122,6 +122,7 @@ public class MyRaptorConnector
             dao.unblockAllMaintenance();
         }
     }
+
     /**
      * This method is used to tell the user the raptor's property -- if it is single-statement-writes-only
      * @see org.assertj.core.api.Assertions.assertThat
@@ -132,6 +133,7 @@ public class MyRaptorConnector
     {
         return true;
     }
+
     /**
      * This method set the initial transaction of thie RaptorConnector
      * @param isolationLevel in IsolationLevel
@@ -147,6 +149,7 @@ public class MyRaptorConnector
         transactions.put(transaction, metadataFactory.create(tableId -> beginDelete(tableId, transaction.getUuid())));
         return transaction;
     }
+
     /**
      * This method is used after setting the initial transaction of thie RaptorConnector and is commit the transaction
      * @param transaction (in ConnectorTransactionHandle type)
@@ -159,6 +162,7 @@ public class MyRaptorConnector
         checkArgument(transactions.remove(transaction) != null, "no such transaction: %s", transaction);
         finishDelete(((RaptorTransactionHandle) transaction).getUuid());
     }
+
     /**
      * This method is used after setting the initial transaction of thie RaptorConnector and is used to rollback by the given transaction
      * @param transaction (in ConnectorTransactionHandle type)
@@ -173,6 +177,7 @@ public class MyRaptorConnector
         finishDelete(((RaptorTransactionHandle) transaction).getUuid());
         metadata.rollback();
     }
+
     /**
      * This method is a get method
      * @param Nothing.
@@ -184,6 +189,7 @@ public class MyRaptorConnector
     {
         return pageSourceProvider;
     }
+
     /**
      * This method is a get method
      * @param Nothing.
@@ -195,6 +201,7 @@ public class MyRaptorConnector
     {
         return pageSinkProvider;
     }
+
     /**
      * This method is a get method
      * @param transaction in ConnectorTransactionHandle type
@@ -208,6 +215,7 @@ public class MyRaptorConnector
         checkArgument(metadata != null, "no such transaction: %s", transaction);
         return metadata;
     }
+
     /**
      * This method is a get method
      * @param Nothing.
@@ -219,6 +227,7 @@ public class MyRaptorConnector
     {
         return splitManager;
     }
+
     /**
      * This method is a get method
      * @param Nothing.
@@ -230,6 +239,7 @@ public class MyRaptorConnector
     {
         return nodePartitioningProvider;
     }
+
     /**
      * This method is a get method
      * @param Nothing.
@@ -241,6 +251,7 @@ public class MyRaptorConnector
     {
         return sessionProperties;
     }
+
     /**
      * This method is a get method
      * @param Nothing.
@@ -252,6 +263,7 @@ public class MyRaptorConnector
     {
         return tableProperties;
     }
+
     /**
      * This method is a get method
      * @param Nothing.
@@ -263,6 +275,7 @@ public class MyRaptorConnector
     {
         return systemTables;
     }
+
     /**
      * This method is a get method
      * @param Nothing.
@@ -274,6 +287,7 @@ public class MyRaptorConnector
     {
         return accessControl;
     }
+
     /**
      * This method shutdown the whole process
      * @param Nothing.
@@ -285,6 +299,7 @@ public class MyRaptorConnector
     {
         lifeCycleManager.stop();
     }
+
     /**
      * This method is used to begin the delete table(s)
      * @param transactionId in UUID
@@ -297,6 +312,7 @@ public class MyRaptorConnector
         dao.blockMaintenance(tableId);
         verify(deletions.put(tableId, transactionId));
     }
+
     /**
      * This method is used to finish the delete table(s)
      * @param transactionId in UUID
@@ -316,6 +332,7 @@ public class MyRaptorConnector
                     }
                 });
     }
+
     /**
      * This method is used to unblock the maintenance
      * @param tableId in long
@@ -328,7 +345,7 @@ public class MyRaptorConnector
             dao.unblockMaintenance(tableId);
         }
         catch (Throwable t) {
-            log.warn(t, "Failed to unblock maintenance for table ID %s, will retry", tableId);
+            LOG.warn(t, "Failed to unblock maintenance for table ID %s, will retry", tableId);
             unblockMaintenanceExecutor.schedule(() -> unblockMaintenance(tableId), 2, SECONDS);
         }
     }

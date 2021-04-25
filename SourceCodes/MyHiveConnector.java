@@ -108,23 +108,25 @@ public class MyHiveConnector
         this.accessControl = requireNonNull(accessControl, "accessControl is null");
         this.classLoader = requireNonNull(classLoader, "classLoader is null");
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return Optional.of(new HiveHandleResolver())
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public Optional<ConnectorHandleResolver> getHandleResolver()
     {
         return Optional.of(new HiveHandleResolver());
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return ClassLoaderSafeConnectorMetadata(metadata, classLoader) (in ConnectorMetadata type)
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public ConnectorMetadata getMetadata(ConnectorTransactionHandle transaction)
     {
@@ -132,166 +134,181 @@ public class MyHiveConnector
         checkArgument(metadata != null, "no such transaction: %s", transaction);
         return new ClassLoaderSafeConnectorMetadata(metadata, classLoader);
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return splitManager (in ConnectorSplitManager type)
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public ConnectorSplitManager getSplitManager()
     {
         return splitManager;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return pageSourceProvider (in ConnectorPageSourceProvider type)
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public ConnectorPageSourceProvider getPageSourceProvider()
     {
         return pageSourceProvider;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return pageSinkProvider (in ConnectorPageSinkProvider type)
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public ConnectorPageSinkProvider getPageSinkProvider()
     {
         return pageSinkProvider;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return nodePartitioningProvider (in ConnectorNodePartitioningProvider type)
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public ConnectorNodePartitioningProvider getNodePartitioningProvider()
     {
         return nodePartitioningProvider;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return systemTables
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public Set<SystemTable> getSystemTables()
     {
         return systemTables;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return Set<Procedure> (in procedures type)
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public Set<Procedure> getProcedures()
     {
         return procedures;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return sessionProperties
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public List<PropertyMetadata<?>> getSessionProperties()
     {
         return sessionProperties;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return schemaProperties
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public List<PropertyMetadata<?>> getSchemaProperties()
     {
         return schemaProperties;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return analyzeProperties
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public List<PropertyMetadata<?>> getAnalyzeProperties()
     {
         return analyzeProperties;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return tableProperties
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public List<PropertyMetadata<?>> getTableProperties()
     {
         return tableProperties;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return hiveMaterializedViewMetadata.getMaterializedViewProperties()
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public List<PropertyMetadata<?>> getMaterializedViewProperties()
     {
         return hiveMaterializedViewMetadata.getMaterializedViewProperties();
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
-     * @return eventListeners 
+     * @return eventListeners
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public Iterable<EventListener> getEventListeners()
     {
         return eventListeners;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
      * @return accessControl (in ConnectorAccessControl type)
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public ConnectorAccessControl getAccessControl()
     {
         return accessControl;
     }
+
     /**
      * This method tell the property of the Hive that if it is single-statement-writes-only
      * @param no parameter is required
      * @return this is a void method
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public boolean isSingleStatementWritesOnly()
     {
         return false;
     }
+
     /**
      * This method set the initial transaction of thie RaptorConnector
      * @param an IsolationLevel and a boolean value
      * @return transaction (in ConnectorTransactionHandle type)
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public ConnectorTransactionHandle beginTransaction(IsolationLevel isolationLevel, boolean readOnly)
     {
@@ -302,12 +319,13 @@ public class MyHiveConnector
         }
         return transaction;
     }
+
     /**
      * This method is used after setting the initial transaction of thie RaptorConnector and is commit the transaction
      * @param transaction (in ConnectorTransactionHandle type)
      * @return this is a void method
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public void commit(ConnectorTransactionHandle transaction)
     {
@@ -317,12 +335,13 @@ public class MyHiveConnector
             metadata.commit();
         }
     }
+
     /**
      * This method shutdown the whole process
      * @param no parameter required
      * @return this is a void method
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7113
+    //CS304 Issue link: https://github.com/trinodb/trino/iss
     @Override
     public final void shutdown()
     {

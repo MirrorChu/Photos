@@ -118,6 +118,7 @@ public abstract class TestIcebergConnectorTest
     {
         throw new SkipException("Iceberg connector does not support column default values");
     }
+
     /**
      * This method test if there are errors when rename the table in SQL
      * @param no parameter required
@@ -130,6 +131,7 @@ public abstract class TestIcebergConnectorTest
     {
         assertQueryFails("ALTER TABLE orders RENAME TO rename_orders", "Rename not supported for Iceberg tables");
     }
+
     /**
      * This method test if there are errors when create an arrayTable in SQL
      * @param no parameter required

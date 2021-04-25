@@ -57,6 +57,7 @@ public class TestBigQueryReadRows
         assertThat(responses.size()).isEqualTo(2);
         assertThat(responses.stream().mapToLong(ReadRowsResponse::getRowCount).sum()).isEqualTo(21);
     }
+
     /**
      * This method aims at testing if there are retry-of-single failures in the BigQuery-using rows
      * @param no parameter required

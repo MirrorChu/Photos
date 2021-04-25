@@ -1,4 +1,5 @@
-/*
+
+/**
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -30,6 +31,7 @@ public class BigQueryReadRows
     private final BigQueryStorageClient client;
     private final ReadRowsRequest.Builder request;
     private final int maxReadRowsRetries;
+
     /**
      * This method aims at testing if there are failures in the BigQuery-using rows
      * @param client in BigQueryStorageClient
@@ -44,6 +46,7 @@ public class BigQueryReadRows
         this.request = requireNonNull(request, "request cannot be null");
         this.maxReadRowsRetries = maxReadRowsRetries;
     }
+
     /**
      * This method read all the rows and return
      * @param no parameter required
@@ -55,6 +58,7 @@ public class BigQueryReadRows
         Iterator<ReadRowsResponse> serverResponses = fetchResponses(request);
         return new ReadRowsIterator(this, request.getReadPositionBuilder(), serverResponses);
     }
+
     /**
      * This method aims at fetching response for all the rows
      * @param no parameter required
@@ -68,6 +72,7 @@ public class BigQueryReadRows
                 .call(readRowsRequest.build())
                 .iterator();
     }
+
     // In order to enable testing
     // Ported from https://github.com/GoogleCloudDataproc/spark-bigquery-connector/pull/150
     private static class ReadRowsIterator

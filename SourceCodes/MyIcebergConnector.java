@@ -92,6 +92,7 @@ public class MyIcebergConnector
         this.accessControl = requireNonNull(accessControl, "accessControl is null");
         this.procedures = requireNonNull(procedures, "procedures is null");
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -103,6 +104,7 @@ public class MyIcebergConnector
     {
         return Optional.of(new IcebergHandleResolver());
     }
+
     /**
      * This method is used to tell the user the raptor's property -- if it is single-statement-writes-only
      * @return The result of the test
@@ -114,6 +116,7 @@ public class MyIcebergConnector
     {
         return true;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -125,6 +128,7 @@ public class MyIcebergConnector
     {
         return immutableEnumSet(NOT_NULL_COLUMN_CONSTRAINT);
     }
+
     /**
      * This method is a get method
      * @param transaction in ConnectorTransactionHandle
@@ -137,6 +141,7 @@ public class MyIcebergConnector
         ConnectorMetadata metadata = transactionManager.get(transaction);
         return new ClassLoaderSafeConnectorMetadata(metadata, getClass().getClassLoader());
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -148,6 +153,7 @@ public class MyIcebergConnector
     {
         return splitManager;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -159,6 +165,7 @@ public class MyIcebergConnector
     {
         return pageSourceProvider;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -170,6 +177,7 @@ public class MyIcebergConnector
     {
         return pageSinkProvider;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -181,6 +189,7 @@ public class MyIcebergConnector
     {
         return nodePartitioningProvider;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -192,6 +201,7 @@ public class MyIcebergConnector
     {
         return systemTables;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -203,6 +213,7 @@ public class MyIcebergConnector
     {
         return procedures;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -214,6 +225,7 @@ public class MyIcebergConnector
     {
         return sessionProperties;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -225,6 +237,7 @@ public class MyIcebergConnector
     {
         return schemaProperties;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -236,6 +249,7 @@ public class MyIcebergConnector
     {
         return tableProperties;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -247,6 +261,7 @@ public class MyIcebergConnector
     {
         return tableProperties;
     }
+
     /**
      * This method is a get method
      * @param no parameter is required
@@ -258,6 +273,7 @@ public class MyIcebergConnector
     {
         return accessControl;
     }
+
     /**
      * This method set the initial transaction of thie RaptorConnector
      * @param isolationLevel in IsolationLevel
@@ -275,23 +291,25 @@ public class MyIcebergConnector
         }
         return transaction;
     }
+
     /**
      * This method is used after setting the initial transaction of thie RaptorConnector and is commit the transaction
      * @param transaction (in ConnectorTransactionHandle type)
      * @return this is a void method
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7103
+    //CS304 Issue link: https://github.com/trinodb/trino/issues/7107
     @Override
     public void commit(ConnectorTransactionHandle transaction)
     {
         transactionManager.remove(transaction);
     }
+
     /**
      * This method shutdown the whole process
      * @param no parameter required
      * @return this is a void method
      */
-    //CS304 Issue link: https://github.com/trinodb/trino/issues/7103
+    //CS304 Issue link: https://github.com/trinodb/trino/issues/7107
     @Override
     public final void shutdown()
     {
